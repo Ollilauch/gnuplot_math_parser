@@ -1,8 +1,8 @@
-### math equation parser using gnuplot for plotting
-========
+math equation parser using gnuplot for plotting
+===============================================
 
 Dependency
---------
+----------
 - gnuplot
 
 ```
