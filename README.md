@@ -18,3 +18,8 @@ make
 ---
 
 press q to quit program
+
+---
+
+### Credits:
+- longradix for the [gnuplot C wrapper](https://github.com/longradix/gnuplot_i) 
