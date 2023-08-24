@@ -1,6 +1,7 @@
 ### math equation parser using gnuplot for plotting
 
-### Dependency
+Dependency
+--------
 - gnuplot
 
 ```
@@ -19,7 +20,6 @@ make
 
 press q to quit program
 
----
-
-### Credits:
+Credits:
+--------
 - longradix for the [gnuplot C wrapper](https://github.com/longradix/gnuplot_i) 
