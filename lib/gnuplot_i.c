@@ -188,7 +188,7 @@ gnuplot_ctrl *gnuplot_init (void) {
 #endif
 #endif
 #ifndef _WIN32
-  FAIL_IF (gnuplot_get_program_path("gnuplot.exe") == NULL, "Cannot find gnuplot in your PATH, check `which gnuplot`");
+  FAIL_IF (gnuplot_get_program_path("gnuplot") == NULL, "Cannot find gnuplot in your PATH, check `which gnuplot`");
 #endif
   FAIL_IF (gnuplot_get_program_path(GNUPLOT_EXEC) == NULL, "Cannot find gnuplot in your PATH, check `which gnuplot`");
 
