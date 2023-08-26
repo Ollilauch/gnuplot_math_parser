@@ -5,8 +5,10 @@
 
 #ifdef _WIN32
     #define TERMINAL "windows"
+    #define PID      system("tasklist | findstr gnuplot")
 #elif __linux__
     #define TERMINAL "x11"
+    #define PID      system("pidof -x gnuplot")
 #endif
 
 #define SECONDS 1000
@@ -44,7 +46,7 @@ int main(int argc, char *argv[]) {
     /** Equations */
 
     printf("\n*** creating terminal ***\n");
-    gnuplot_setterm(h1, TERMINAL, 900, 400);
+    gnuplot_setterm(h1, TERMINAL, 1280, 960);
     //gnuplot_cmd(h1, "plot sin(x) w lines, cos(x) w lines");
     gnuplot_setstyle(h1, "lines");
     gnuplot_cmd(h1, "set grid");
@@ -63,8 +65,13 @@ int main(int argc, char *argv[]) {
     //gnuplot_plot_equation(h1, equation, equation);
     gnuplot_cmd(h1, plot);
 
+    while(PID){}
+
     sleep(SECONDS);
-    gnuplot_close(h1);
+
+    if(PID == 0){
+        gnuplot_close(h1);
+    }
 
     return 0;
 }
@@ -73,7 +80,6 @@ void format_equation(char* s){
     int num   = 0;
     int count = 0;
     int k     = 1;
-    int m     = 0;
     int index[100];
 
     for(int i = 0; s[i] != 0; i++){
@@ -86,6 +92,8 @@ void format_equation(char* s){
         }
 
         else if(s[i] == '^' && is_digit(s[i+1])){
+            count = 0;
+            num = 0;
             k = 1;
             // TODO: check if number is larger than 1 digit
             while(is_digit(s[i+k]) && s[i+k] != 0){
